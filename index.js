@@ -192,7 +192,14 @@ var async = module.parent.require('async'),
 				tags = feed.tags.split(',');
 			}
 
-			var content = S(entry.summary.content).stripTags('div', 'script', 'span').trim().s;
+			var content = "";
+			try {
+			  content += S(entry.summary.content).stripTags('div', 'script', 'span').trim().s;
+			}
+			catch(e) {
+			  winston.warning('[[nodebb-plugin-rss:warning]] Summary is missing in '+ entry.link.href);
+			}
+			content += '<a href="'+entry.link.href+'"> Read more.. </a>';
 
 			if (settings.collapseWhiteSpace) {
 				content = S(content).collapseWhitespace().s;
