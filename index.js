@@ -199,7 +199,8 @@ var async = module.parent.require('async'),
 			catch(e) {
 			  winston.warning('[[nodebb-plugin-rss:warning]] Summary is missing in '+ entry.link.href);
 			}
-			content += '<a href="'+entry.link.href+'"> Read more.. </a>';
+			articleLink = entry.link[0].href.replace('utm_source=notSet','utm_source=scforum');
+			content += '<a href="'+articleLink+'"> Read more.. </a>';
 
 			if (settings.collapseWhiteSpace) {
 				content = S(content).collapseWhitespace().s;
