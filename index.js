@@ -197,7 +197,7 @@ var async = module.parent.require('async'),
 			  content += S(entry.summary.content).stripTags('div', 'script', 'span').trim().s;
 			}
 			catch(e) {
-			  winston.warning('[[nodebb-plugin-rss:warning]] Summary is missing in '+ entry.link.href);
+			  winston.warn('[[nodebb-plugin-rss:warning]] Summary is missing in '+ entry.link.href);
 			}
 			content += '<a href="'+ entry.link[0].href.replace('utm_source=notSet','utm_source=scforum') +'"> Read more.. </a>';
 
